@@ -54,13 +54,13 @@ pipeline {
                 ]) {
                     sh '''
                     # Export KUBECONFIG
-                    export KUBECONFIG=/home/ubuntu/.kube/"$KCFG"
+                    export KUBECONFIG=/home/ubuntu/.kube/config
 
                     # Fix Minikube cert permissions if using local Minikube
-                    sudo chown -R ubuntu:ubuntu ~/.minikube ~/.kube || true
-                    chmod 600 ~/.minikube/profiles/minikube/client.key || true
-                    chmod 644 ~/.minikube/profiles/minikube/client.crt || true
-                    chmod 644 ~/.minikube/ca.crt || true
+                    sudo chown -R ubuntu:ubuntu /home/ubuntu/.minikube /home/ubuntu/.kube
+                    chmod 600 /home/ubuntu/.minikube/profiles/minikube/client.key
+                    chmod 644 /home/ubuntu/.minikube/profiles/minikube/client.crt
+                    chmod 644 /home/ubuntu/.minikube/ca.crt
 
                     # Apply YAML and check rollout
                     kubectl apply -f /home/ubuntu/project/tf/k8s/simple-app.yml --validate=false
