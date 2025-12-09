@@ -13,7 +13,7 @@ COPY src /simple-java-maven-app/src
 RUN mvn clean package -DskipTests
 
 # -------- Runtime Stage --------
-FROM eclipse-temurin:17
+FROM eclipse-temurin:21
 
 WORKDIR /app
 
