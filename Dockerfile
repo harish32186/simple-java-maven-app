@@ -1,15 +1,13 @@
 # -------- Build Stage --------
-FROM maven AS build
+FROM maven:3.9.4-eclipse-temurin-21 AS build
 
-# Set working directory
 WORKDIR /simple-java-maven-app
 
-# Copy the pom.xml and source code to the container
+# Copy Maven files
 COPY pom.xml /simple-java-maven-app/
 COPY src /simple-java-maven-app/src
 
-
-# Build application
+# Build the app
 RUN mvn clean package -DskipTests
 
 # -------- Runtime Stage --------
@@ -17,11 +15,11 @@ FROM eclipse-temurin:21
 
 WORKDIR /app
 
-# Copy built artifact
+# Copy built JAR
 COPY --from=build /simple-java-maven-app/target/*.jar app.jar
 
-# Expose port (change if your app uses a different port)
+# Expose port 8080
 EXPOSE 8080
 
-# Run the app
+# Start the app
 ENTRYPOINT ["java", "-jar", "app.jar"]
