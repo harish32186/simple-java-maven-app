@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build & Push Docker Image') {
             steps {
-                dir('project/tf') {
+                dir('.') {
                     withCredentials([
                         usernamePassword(
                             credentialsId: '19b9a84d-4412-427f-ab0d-435f340b5974', 
