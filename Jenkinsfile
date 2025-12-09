@@ -54,7 +54,7 @@ pipeline {
                 ]) {
                     sh '''
                     # Export KUBECONFIG
-                    export KUBECONFIG="$KCFG"
+                    export KUBECONFIG=/home/ubuntu/.kube/"$KCFG"
 
                     # Fix Minikube cert permissions if using local Minikube
                     sudo chown -R ubuntu:ubuntu ~/.minikube ~/.kube || true
