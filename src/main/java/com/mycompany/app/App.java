@@ -1,19 +1,18 @@
 package com.mycompany.app;
 
-/**
- * Hello world!
- */
+import com.sun.net.httpserver.HttpServer;
+import java.net.InetSocketAddress;
+
 public class App {
-
-    private static final String MESSAGE = "Hello World!";
-
-    public App() {}
-
-    public static void main(String[] args) {
-        System.out.println(MESSAGE);
-    }
-
-    public String getMessage() {
-        return MESSAGE;
+    public static void main(String[] args) throws Exception {
+        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        server.createContext("/", exchange -> {
+            String response = "Hello from Kubernetes!";
+            exchange.sendResponseHeaders(200, response.length());
+            exchange.getResponseBody().write(response.getBytes());
+            exchange.close();
+        });
+        server.start();
+        System.out.println("Server started on port 8080");
     }
 }
