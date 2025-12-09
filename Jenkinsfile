@@ -63,7 +63,7 @@ pipeline {
                     chmod 644 ~/.minikube/ca.crt || true
 
                     # Apply YAML and check rollout
-                    kubectl apply -f project/tf/k8s/simple-app.yml
+                    kubectl apply -f /home/ubuntu/project/tf/k8s/simple-app.yml
                     kubectl rollout status deployment/simple-app
                     kubectl get pods -A
                     '''
