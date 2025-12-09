@@ -18,7 +18,7 @@ FROM eclipse-temurin:21
 WORKDIR /app
 
 # Copy built artifact
-COPY --from=build /simple-java-maven-app/target/*.jar simple-java-maven-app.jar
+COPY --from=build /simple-java-maven-app/target/*.jar app.jar
 
 # Expose port (change if your app uses a different port)
 EXPOSE 8080
