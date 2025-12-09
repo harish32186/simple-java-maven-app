@@ -38,7 +38,7 @@ pipeline {
                 ]) {
                     sh '''
                     export ANSIBLE_HOST_KEY_CHECKING=False
-                    ansible-playbook ansible/deploy.yml --private-key "$SSH_KEY"
+                    ansible-playbook -i inventory ansible/deploy.yml --private-key "$SSH_KEY"
                     '''
                 }
             }
