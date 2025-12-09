@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'ubuntu' }
 
     environment {
         IMAGE_NAME = "harishchandra86/simple-java-maven-app"
