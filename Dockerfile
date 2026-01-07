@@ -1,5 +1,5 @@
 # -------- Build Stage --------
-FROM maven:3.9.9-eclipse-temurin-21 AS build
+FROM maven:3.9.11-eclipse-temurin-25 AS build
 
 # Set working directory
 WORKDIR /simple-java-maven-app
